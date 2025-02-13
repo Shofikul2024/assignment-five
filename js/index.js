@@ -110,4 +110,43 @@ document
       return;
     }
 
-     
+    // history section
+
+    const historyItem = document.createElement("div");
+    historyItem.className = "p-4 rounded-lg border";
+
+    historyItem.innerHTML = `
+    <p class="text-lg font-medium">${addMoney} Taka is Donated for Quota at, Bangladesh</p>
+    <p class="font-light text-gray-500">Date: ${new Date().toLocaleDateString()}</p>
+    `;
+
+    const historyContainer = document.getElementById("history-list");
+
+    historyContainer.insertBefore(historyItem, historyContainer.firstChild);
+
+    empty.value = '';
+  });
+
+//   histor tab funtionality
+const historyBtn = document.getElementById("history-btn");
+const donationBtn = document.getElementById("donation-btn");
+historyBtn.addEventListener("click", function () {
+  historyBtn.classList.add("bg-btn-primary", "font-semibold", "border-none");
+  donationBtn.classList.remove(
+    "bg-btn-primary",
+    "font-semibold",
+    "border-none"
+  );
+
+  document.getElementById("main-content").classList.add("hidden");
+  document.getElementById("history-section").classList.remove("hidden");
+});
+
+// donation tab funtionality
+donationBtn.addEventListener("click", function () {
+  historyBtn.classList.remove("bg-btn-primary", "font-semibold", "border-none");
+  donationBtn.classList.add("bg-btn-primary", "font-semibold", "border-none");
+
+  document.getElementById("main-content").classList.remove("hidden");
+  document.getElementById("history-section").classList.add("hidden");
+});
